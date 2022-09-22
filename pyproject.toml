@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "convert-jupyter"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <bartekchwilkowski@gmail.com>"]
+readme = "README.md"
+packages = [{include = "convert_jupyter"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+exclude = "(.venv|migrations)"
+target_version = ["py310"]
+line-length = 100
+
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 100
+skip = [".venv", "migrations"]
