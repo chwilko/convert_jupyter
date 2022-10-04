@@ -40,15 +40,6 @@ def get_code(value: str):
     }
     return cell
 
-def check(s1, s2):
-    # for i in range(len(s1)):
-    #     print(s1[i], s2[i], s1[i] == s2[i], file=f)
-    # print("______", file = f)
-    # print(s1, file = f)
-    # print(s2, file = f)
-    print(s1 == s2, file = f)
-
-
 
 def encode(f_in_name: str, f_out_name: str = None):
 
