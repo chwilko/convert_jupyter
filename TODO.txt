@@ -1,2 +1,7 @@
-czyszczenie plików:
-    - testy
+testy:
+    code-decode
+
+code-decode:
+    jupyter2py (?) 
+
+eval jupyter

@@ -17,12 +17,15 @@ def clear(path: str):
     new_cells = []
     for cell in my_file["cells"]:
         new_cell = {}
+        if cell["cell_type"] == "code":
+            new_cell["outputs"] = []
+            new_cell["execution_count"] = None
         for key in ("cell_type", "metadata", "source"):
             new_cell[key] = cell[key]
         new_cells.append(new_cell)
     my_file["cells"] = new_cells
     with open(path, "w") as f:
-        print(json.dumps(my_file, indent=4), file = f)
+        print(json.dumps(my_file, indent=1, sort_keys=True), file = f)
 
 
 if __name__ == "__main__":

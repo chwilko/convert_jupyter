@@ -1,4 +1,4 @@
-from convert_jupyter.code import decode, encode
+from menage_jupyter.code import decode, encode
 
 
 def test_decode():
