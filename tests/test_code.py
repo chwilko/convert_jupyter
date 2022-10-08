@@ -1,8 +1,9 @@
-from menage_jupyter.code import decode, encode
+from menage_jupyter.code import jupyter2py, py2jupyter
 
 
 def test_decode():
-    decode("scripts/reaserch/try.ipynb")
+    jupyter2py("scripts/reaserch/try.ipynb")
+
 
 def test_encode():
-    encode("scripts/reaserch/try.py", "scripts/reaserch/try2.ipynb")
+    py2jupyter("scripts/reaserch/try.py", "scripts/reaserch/try2.ipynb")

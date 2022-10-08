@@ -1,0 +1,26 @@
+# Menage jupyter 
+This project help menage jupyter flie.
+It let:
+    - convert .ipynb to .py file
+    - convert .py to .ipynb file
+    - clean output jupyter
+
+
+## autors
+Bartłomiej Chwiłkowski (github: chwilko)
+
+
+# Structure
+menage_jupyter:
+    - file with functions
+
+
+## Functions 
+
+jupyter2py(f_in_name: str, f_out_name: str = None)
+py2jupyter(f_in_name: str, f_out_name: str = None)
+clean(path: str)
+
+## Licence
+CC BY
+https://creativecommons.org/licenses/?lang=pl

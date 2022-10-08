@@ -1,6 +1,6 @@
 import os
 
-from menage_jupyter.clear import clear
+from menage_jupyter.clean import clean
 
 
 def test_clear():
@@ -12,9 +12,7 @@ def test_clear():
     with open(TEST_FILE, "r") as f_out:
         with open(tmp_file, "w") as f_in:
             f_in.write(f_out.read())
-    clear(tmp_file)
+    clean(tmp_file)
     with open(TEST_FILE_CLEAR, "r") as f_expected:
         with open(tmp_file, "r") as f_actual:
             assert f_expected.read() == f_actual.read()
-    
-            

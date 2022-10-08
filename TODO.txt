@@ -1,7 +1,4 @@
 testy:
     code-decode
 
-code-decode:
-    jupyter2py (?) 
-
 eval jupyter

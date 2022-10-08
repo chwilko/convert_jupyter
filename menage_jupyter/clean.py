@@ -2,16 +2,27 @@ import json
 import os
 
 
-def get_files_ext(path: str, ext: str="ipynb"):
+def get_files_ext(path: str, ext: str = "ipynb"):
     ext_files = []
-    for (root, _, files) in os.walk(path):#, topdown=True):
+    for (root, _, files) in os.walk(path):
         for f in files:
             if f.split(".")[-1] == ext:
                 ext_files.append(os.sep.join([root, f]))
     return ext_files
 
 
-def clear(path: str):
+def clean_all(path: str) -> None:
+    file_to_clear = get_files_ext(path, ext="ipynb")
+    for f in file_to_clear:
+        clean(f)
+
+
+def clean(path: str) -> None:
+    """Function clean jupyter output.
+
+    Args:
+        path (str): file to clean
+    """
     with open(path, "r") as f:
         my_file = json.load(f)
     new_cells = []
@@ -25,10 +36,10 @@ def clear(path: str):
         new_cells.append(new_cell)
     my_file["cells"] = new_cells
     with open(path, "w") as f:
-        print(json.dumps(my_file, indent=1, sort_keys=True), file = f)
+        print(json.dumps(my_file, indent=1, sort_keys=True), file=f)
 
 
 if __name__ == "__main__":
     file_to_clear = get_files_ext(os.getcwd())[0]
     print(file_to_clear)
-    clear(file_to_clear)
+    clean(file_to_clear)
