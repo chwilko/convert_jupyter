@@ -1,10 +1,19 @@
 [tool.poetry]
 name = "convert-jupyter"
-version = "0.1.0"
+version = "0.1.4"
 description = ""
-authors = ["Your Name <bartekchwilkowski@gmail.com>"]
+authors = ["Bartłomiej Chwiłkowski <bartekchwilkowski@gmail.com>"]
+packages = [{include = "menage_jupyter"}]
 readme = "README.md"
-packages = [{include = "convert_jupyter"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/chwilko/menage_jupyter"
+
 
 [tool.poetry.dependencies]
 python = "^3.8"

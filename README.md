@@ -22,5 +22,4 @@ py2jupyter(f_in_name: str, f_out_name: str = None)
 clean(path: str)
 
 ## Licence
-CC BY
-https://creativecommons.org/licenses/?lang=pl
+MIT
