@@ -2,3 +2,8 @@ testy:
     code-decode
 
 eval jupyter
+flags dla clean:
+    - output
+    - number
+    - other
+
