@@ -17,6 +17,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
+black = {extras = ["jupyter"], version = "^22.10.0"}
 
 
 [build-system]

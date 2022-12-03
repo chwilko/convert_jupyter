@@ -22,12 +22,13 @@ def jupyter2py(f_in_name: str, f_out_name: str = None) -> None:
 
     my_file = json.load(f_in)
 
-    for cell in my_file["cells"]:
-        print(CELL_SEPARATOR, file=f_out)
+    for i, cell in enumerate(my_file["cells"]):
+        if i > 0:
+            print(CELL_SEPARATOR, file=f_out, end="")
         if cell["cell_type"] == "code":
-            print(*cell["source"], sep="", file=f_out)
+            print(*cell["source"], sep="", file=f_out, end="")
         elif cell["cell_type"] == "markdown":
-            print(MARKDOWN_BEGIN, *cell["source"], MARKDOWN_END, sep="", file=f_out)
+            print(MARKDOWN_BEGIN, *cell["source"], MARKDOWN_END, sep="", file=f_out, end="")
 
 
 def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
@@ -50,8 +51,8 @@ def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
     text = f_in.read()
     cells_text = text.split(CELL_SEPARATOR)
     cells = []
-    for cell in cells_text[1:]:
-        cell = cell[1:]
+    for cell in cells_text:
+        cell = cell
         if cell[: len(MARKDOWN_BEGIN)] == MARKDOWN_BEGIN:
             cells.append(_get_markdown(cell))
         else:
@@ -84,16 +85,13 @@ def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
     )
     ret["nbformat"] = (4,)
     ret["nbformat_minor"] = 2
-    print(json.dumps(ret, indent=4), file=f_out)
+    print(json.dumps(ret, indent=4), file=f_out, end="")
 
 
 def _get_markdown(value: str):
-    value.replace(MARKDOWN_BEGIN, "")
-    value.replace(MARKDOWN_END, "")
-
     cell = {
         "cell_type": "markdown",
-        "source": value[len(MARKDOWN_BEGIN) + 1 : -len(MARKDOWN_END)],
+        "source": value[len(MARKDOWN_BEGIN) : -len(MARKDOWN_END)],
         "metadata": {},
     }
     return cell
