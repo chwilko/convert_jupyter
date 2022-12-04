@@ -10,8 +10,8 @@ classifiers = [
 
 setup(
     name="menage_jupyter.py",
-    version="0.1.0",
-    description="Usefull functions to menage jupyter files",
+    version="0.1.4",
+    description="Package help menage jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts",
     long_description=open("README.md").read() + "\n",
     url="",
     author="chwilko",

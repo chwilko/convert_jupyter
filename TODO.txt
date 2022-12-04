@@ -1,8 +1,6 @@
-testy:
-    code-decode
 
 eval jupyter
-flags dla clean:
+flags fpr clean:
     - output
     - number
     - other
