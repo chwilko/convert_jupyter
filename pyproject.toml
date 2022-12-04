@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "convert-jupyter"
-version = "0.1.4"
+version = "0.1.5"
 description = "Package help menage jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts"
 
 authors = ["Bartłomiej Chwiłkowski <bartekchwilkowski@gmail.com>"]
@@ -25,7 +25,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "convert-jupyter"
-version = "0.1.4"
+version = "0.1.5"
 authors = [    
   { name="Bartłomiej Chwiłkowski", email="bartekchwilkowski@gmail.com" },
   ]

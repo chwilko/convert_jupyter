@@ -3,3 +3,6 @@ YOU:
 
 lint:
 	bash lint.sh
+
+new_wersin_upload:
+	bash upload.sh
