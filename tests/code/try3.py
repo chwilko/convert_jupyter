@@ -4,6 +4,7 @@
 # New cell
 import matplotlib.pyplot as plt
 import numpy as np
+
 # New cell
 """md
 ## initialize

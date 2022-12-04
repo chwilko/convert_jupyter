@@ -1,5 +1,6 @@
 import json
 import os
+from typing import Any, Dict
 
 
 def get_files_ext(path: str, ext: str = "ipynb"):
@@ -12,22 +13,28 @@ def get_files_ext(path: str, ext: str = "ipynb"):
 
 
 def clean_all(path: str) -> None:
+    """The function recursively finds all jupyter files
+        and clears their output.
+
+    Args:
+        path (str): path with files to clean
+    """
     file_to_clear = get_files_ext(path, ext="ipynb")
     for f in file_to_clear:
         clean(f)
 
 
 def clean(path: str) -> None:
-    """Function clean jupyter output.
+    """Function clean jupyter file output.
 
     Args:
-        path (str): file to clean
+        path (str): file to cleancells
     """
     with open(path, "r") as f:
         my_file = json.load(f)
     new_cells = []
     for cell in my_file["cells"]:
-        new_cell = {}
+        new_cell: Dict[str, Any] = {}
         if cell["cell_type"] == "code":
             new_cell["outputs"] = []
             new_cell["execution_count"] = None

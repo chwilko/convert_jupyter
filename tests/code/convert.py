@@ -15,4 +15,10 @@ for cell in my_file["cells"]:
     if cell["cell_type"] == "code":
         print(*cell["source"], sep="", file=f_out)
     elif cell["cell_type"] == "markdown":
-        print(MARKDOWN_BEGIN, *cell["source"], MARKDOWN_END, sep="", file=f_out)
+        print(
+            MARKDOWN_BEGIN,
+            *cell["source"],
+            MARKDOWN_END,
+            sep="",
+            file=f_out,
+        )

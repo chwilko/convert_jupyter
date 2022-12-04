@@ -1,9 +1,11 @@
 import json
+from os.path import exists
+from typing import Any, Dict
 
 from .constans import CELL_SEPARATOR, MARKDOWN_BEGIN, MARKDOWN_END
 
 
-def jupyter2py(f_in_name: str, f_out_name: str = None) -> None:
+def jupyter2py(f_in_name: str, f_out_name: str = None, force=False) -> None:
     """Function convert .ipynb to .py file.
 
     Function convert .ipynb to .py file.
@@ -13,11 +15,21 @@ def jupyter2py(f_in_name: str, f_out_name: str = None) -> None:
     Args:
         f_in_name (str): File to convert name.
         f_out_name (str, optional): Converted file name.
-            If None new file have the same name as old file, but other extenction. Defaults to None.
+            If None new file have the same name as old file,
+            but other extenction. Defaults to None.
+        force (bool, optional): If False if f_out_name file exists raise error.
+            If True f_out_name is overwrite. Defaults to False.
+
+    Raises:
+        FileExistsError: If file should be overwritten, but force is False
     """
-    f_in = open(f_in_name, "r")
     if f_out_name is None:
         f_out_name = f_in_name.replace(".ipynb", ".py")
+    if force is False and exists(f_out_name):
+        raise FileExistsError(
+            f"{f_out_name} exist, use force=True to overwrite",
+        )
+    f_in = open(f_in_name, "r")
     f_out = open(f_out_name, "w")
 
     my_file = json.load(f_in)
@@ -28,10 +40,17 @@ def jupyter2py(f_in_name: str, f_out_name: str = None) -> None:
         if cell["cell_type"] == "code":
             print(*cell["source"], sep="", file=f_out, end="")
         elif cell["cell_type"] == "markdown":
-            print(MARKDOWN_BEGIN, *cell["source"], MARKDOWN_END, sep="", file=f_out, end="")
+            print(
+                MARKDOWN_BEGIN,
+                *cell["source"],
+                MARKDOWN_END,
+                sep="",
+                file=f_out,
+                end="",
+            )
 
 
-def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
+def py2jupyter(f_in_name: str, f_out_name: str = None, force=False) -> None:
     """Function convert .py to .ipynb file.
 
     Function convert .py to .ipynb file.
@@ -41,13 +60,23 @@ def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
     Args:
         f_in_name (str): File to convert name.
         f_out_name (str, optional): Converted file name.
-            If None new file have the same name as old file, but other extenction. Defaults to None.
+            If None new file have the same name as old file,
+            but other extenction. Defaults to None.
+        force (bool, optional): If False if f_out_name file exists raise error.
+            If True f_out_name is overwrite. Defaults to False.
+
+    Raises:
+        FileExistsError: If file should be overwritten, but force is False
     """
-    f_in = open(f_in_name, "r")
     if f_out_name is None:
         f_out_name = f_in_name.replace(".py", ".ipynb")
+    if force is False and exists(f_out_name):
+        raise FileExistsError(
+            f"{f_out_name} exist, use force=True to overwrite",
+        )
+    f_in = open(f_in_name, "r")
     f_out = open(f_out_name, "w")
-    ret = {}
+    ret: Dict[str, Any] = {}
     text = f_in.read()
     cells_text = text.split(CELL_SEPARATOR)
     cells = []
@@ -78,7 +107,7 @@ def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
             "orig_nbformat": 4,
             "vscode": {
                 "interpreter": {
-                    "hash": "916dbcbb3f70747c44a77c7bcd40155683ae19c65e1c03b4aa3499c5328201f1"
+                    "hash": "916dbcbb3f70747c44a77c7bcd40155683ae19c65e1c03b4aa3499c5328201f1"  # noqa
                 }
             },
         },
@@ -91,7 +120,7 @@ def py2jupyter(f_in_name: str, f_out_name: str = None) -> None:
 def _get_markdown(value: str):
     cell = {
         "cell_type": "markdown",
-        "source": value[len(MARKDOWN_BEGIN) : -len(MARKDOWN_END)],
+        "source": value[len(MARKDOWN_BEGIN) : -len(MARKDOWN_END)],  # noqa
         "metadata": {},
     }
     return cell
