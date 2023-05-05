@@ -33,7 +33,7 @@ def jupyter2py(f_in_name: str, f_out_name: str = None, force=False) -> None:
     f_out = open(f_out_name, "w")
 
     my_file = json.load(f_in)
-
+    # print(my_file)
     for i, cell in enumerate(my_file["cells"]):
         if i > 0:
             print(CELL_SEPARATOR, file=f_out, end="")
@@ -81,7 +81,8 @@ def py2jupyter(f_in_name: str, f_out_name: str = None, force=False) -> None:
     cells_text = text.split(CELL_SEPARATOR)
     cells = []
     for cell in cells_text:
-        cell = cell
+        # cell = cell
+        print(cell)
         if cell[: len(MARKDOWN_BEGIN)] == MARKDOWN_BEGIN:
             cells.append(_get_markdown(cell))
         else:

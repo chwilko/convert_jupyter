@@ -8,6 +8,8 @@ import numpy as np
 # New cell
 """md
 ## initialize
+
+
 """
 # New cell
 X = np.arange(0, 100)

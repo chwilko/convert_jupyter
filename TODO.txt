@@ -1,6 +1,6 @@
 
 eval jupyter
-flags fpr clean:
+flags for clean:
     - output
     - number
     - other
