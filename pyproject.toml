@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "convert-jupyter"
-version = "0.1.5"
+version = "0.1.6"
 description = "Package help menage jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts"
 
 authors = ["Bartłomiej Chwiłkowski <bartekchwilkowski@gmail.com>"]
