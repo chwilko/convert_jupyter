@@ -5,12 +5,17 @@ from menage_jupyter.code import jupyter2py, py2jupyter
 
 def test_decode():
     jupyter2py("tests/code/try.ipynb", "tests/code/tmp.py", force=True)
-    with open("tests/code/tmp.py", "r") as expected, open("tests/code/try3.py", "r") as actual:
+    with open("tests/code/tmp.py", "r") as expected, open(
+        "tests/code/try3.py", "r"
+    ) as actual:
         assert expected.read() == actual.read()
+
 
 def test_encode():
     py2jupyter("tests/code/try.py", "tests/code/tmp.ipynb", force=True)
-    with open("tests/code/tmp.ipynb", "r") as expected, open("tests/code/try3.ipynb", "r") as actual:
+    with open("tests/code/tmp.ipynb", "r") as expected, open(
+        "tests/code/try3.ipynb", "r"
+    ) as actual:
         assert expected.read() == actual.read()
 
 

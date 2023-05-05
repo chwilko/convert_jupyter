@@ -1,9 +1,7 @@
-import sys
 import getopt
 import sys
 
-from . import clean, clean_all, py2jupyter, jupyter2py
-
+from . import clean, clean_all, jupyter2py, py2jupyter
 
 force = False
 out_file = None
@@ -11,7 +9,7 @@ out_file = None
 try:
     opts, args = getopt.getopt(sys.argv[1:], "o:f:", ["force="])
 except getopt.GetoptError:
-    print("Usage: python3 -m menage_jupyter -o file_out --force 1 command file")
+    print("Usage: python3 -m menage_jupyter", "-o file_out --force 1 command file")
     sys.exit(2)
 
 command, in_file = args
@@ -35,7 +33,8 @@ elif command == "py2jupyter":
 elif command == "clean":
     clean(in_file)
 elif command == "clean_all":
-    clean(in_file)
+    clean_all(in_file)
 else:
-    raise ValueError('command have to be from {"py2jupyter", "jupyter2py", "clean", "clean_all"}')
-
+    raise ValueError(
+        "command have to be from", '{"py2jupyter", "jupyter2py", "clean", "clean_all"}'
+    )
