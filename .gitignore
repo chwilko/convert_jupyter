@@ -1,3 +1,4 @@
 TODO.txt
 **/__pycache__/**
 .pypirc
+poetry.lock
