@@ -6,7 +6,9 @@ from .constans import CELL_SEPARATOR, MARKDOWN_BEGIN, MARKDOWN_END
 
 
 def jupyter2py(
-    f_in_name: str, f_out_name: Union[str, None] = None, force: bool = False
+    f_in_name: str,
+    f_out_name: Union[str, None] = None,
+    force: bool = False,
 ) -> None:
     """Function convert .ipynb to .py file.
 
@@ -52,7 +54,9 @@ def jupyter2py(
 
 
 def py2jupyter(
-    f_in_name: str, f_out_name: Union[str, None] = None, force: bool = False
+    f_in_name: str,
+    f_out_name: Union[str, None] = None,
+    force: bool = False,
 ) -> None:
     """Function convert .py to .ipynb file.
 

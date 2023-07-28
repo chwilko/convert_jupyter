@@ -79,7 +79,6 @@ try:
 except getopt.GetoptError:
     print(short_help_info)
     sys.exit(2)
-print(opts, args)
 
 command, in_file = None, None
 
@@ -99,13 +98,17 @@ for opt, arg in opts:
         print(get_project_version())
         sys.exit(2)
 
-if command is None:
-    if in_file is None:
-        in_file = args[1]
-    command = args[0]
-else:
-    if in_file is None:
-        in_file = args[0]
+try:
+    if command is None:
+        if in_file is None:
+            in_file = args[1]
+        command = args[0]
+    else:
+        if in_file is None:
+            in_file = args[0]
+except IndexError:
+    print(short_help_info)
+    sys.exit(2)
 
 
 command, in_file = args
