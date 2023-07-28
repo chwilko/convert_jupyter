@@ -7,9 +7,9 @@ force = False
 out_file = None
 
 try:
-    opts, args = getopt.getopt(sys.argv[1:], "o:f:", ["force="])
+    opts, args = getopt.getopt(sys.argv[1:], "o:f:", ["force"])
 except getopt.GetoptError:
-    print("Usage: python3 -m menage_jupyter", "-o file_out --force 1 command file")
+    print("Usage: python3 -m convert_jupyter", "-o file_out --force 1 command file")
     sys.exit(2)
 
 command, in_file = args

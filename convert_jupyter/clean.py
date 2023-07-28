@@ -1,9 +1,20 @@
 import json
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 
-def get_files_ext(path: str, ext: str = "ipynb"):
+def get_files_ext(path: str, ext: str = "ipynb") -> List[str]:
+    """
+    Function looks for files with the specified
+    extension in the path and children's folders.
+
+    Args:
+        path (str): root
+        ext (str, optional): extension searched for. Defaults to "ipynb".
+
+    Returns:
+        List[str]: list of files
+    """
     ext_files = []
     for (root, _, files) in os.walk(path):
         for f in files:
@@ -19,8 +30,8 @@ def clean_all(path: str) -> None:
     Args:
         path (str): path with files to clean
     """
-    file_to_clear = get_files_ext(path, ext="ipynb")
-    for f in file_to_clear:
+    files_to_clear = get_files_ext(path, ext="ipynb")
+    for f in files_to_clear:
         clean(f)
 
 
@@ -30,7 +41,7 @@ def clean(path: str) -> None:
     Args:
         path (str): file to cleancells
     """
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         my_file = json.load(f)
     new_cells = []
     for cell in my_file["cells"]:
@@ -42,7 +53,7 @@ def clean(path: str) -> None:
             new_cell[key] = cell[key]
         new_cells.append(new_cell)
     my_file["cells"] = new_cells
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         print(json.dumps(my_file, indent=1, sort_keys=True), file=f)
 
 

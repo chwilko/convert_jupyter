@@ -1,10 +1,10 @@
 [tool.poetry]
 name = "convert-jupyter"
 version = "0.1.10"
-description = "Package help menage jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts"
+description = "Package help convert jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts"
 
 authors = ["Bartłomiej Chwiłkowski <bartekchwilkowski@gmail.com>"]
-packages = [{include = "menage_jupyter"}]
+packages = [{include = "convert_jupyter"}]
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -15,6 +15,9 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 black = {extras = ["jupyter"], version = "^22.10.0"}
+pylint = "^2.17.5"
+isort = "^5.12.0"
+mypy = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.1.3"
@@ -29,7 +32,7 @@ version = "0.1.10"
 authors = [    
   { name="Bartłomiej Chwiłkowski", email="bartekchwilkowski@gmail.com" },
   ]
-description = "Package help menage jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts"
+description = "Package help convert jupyter files. It let convert py to jupyter file and vice versa, and clean jupyter output. Useful to exclude git conflicts"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -39,5 +42,9 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/chwilko/menage_jupyter"
+"Homepage" = "https://github.com/chwilko/convert_jupyter"
 
+
+
+[tool.black]
+target_version = ["py310"]
