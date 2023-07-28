@@ -3,6 +3,7 @@
 
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade build
+rm -fr dist/*
 python3 -m build
 python3 -m pip install --upgrade twine
 
