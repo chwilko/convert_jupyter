@@ -1,46 +1,24 @@
 import getopt
-import os
 import sys
+
+import pkg_resources
 
 from . import clean, clean_all, jupyter2py, py2jupyter
 
 
 def get_project_version() -> str:
-    """Get project version from pyproject.toml [project] statment.
-
-    Raises:
-        EOFError: If pyproject.toml have not valid field.
+    """Get version number safely.
 
     Returns:
-        str: project version.
-    """
-    main_folder = sys.argv[0].split(os.sep)[:-2]
-    with open(
-        os.sep.join([*main_folder, "pyproject.toml"]), "r", encoding="utf-8"
-    ) as toml:
-        for line in toml:
-            if line.strip() == "[project]":
-                break
-        for line in toml:
-            if line.strip()[:7] == "version":
-                return line.split("=", 1)[1].strip().replace("'", "").replace('"', "")
-    raise EOFError("End of file.")
-
-
-def safety_get_project_version() -> str:
-    """Get project version, but if something work bad return empty string.
-
-    Returns:
-        str: project version or empty string.
+        str: version number, if pkg_resources.DistributionNotFound then "Unknown"
     """
     try:
-        version = get_project_version()
-        return f" version {version}"
-    except:  # pylint: disable=W0702 # noqa
-        return ""
+        return pkg_resources.get_distribution("convert_jupyter").version
+    except pkg_resources.DistributionNotFound:
+        return "Unknown"
 
 
-help_info = f"""convert_jupyter package{safety_get_project_version()}.
+help_info = f"""convert_jupyter package{get_project_version()}.
 Usage:
   python3 -m convert_jupyter [options] <command> <input_file>
 
