@@ -1,7 +1,0 @@
-
-eval jupyter
-flags for clean:
-    - output
-    - number
-    - other
-

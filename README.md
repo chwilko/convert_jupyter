@@ -9,6 +9,8 @@ It let:
 ## autors
 Bartłomiej Chwiłkowski (github: chwilko)
 
+## license
+MIT license
 
 # Usage:
 python3 -m convert_jupyter [options] <command> <input_file>
@@ -52,6 +54,3 @@ clean(path: str)
 clean_all(path: str)
  - The function recursively finds all jupyter files and clears their output.
 
-
-## Licence
-MIT
